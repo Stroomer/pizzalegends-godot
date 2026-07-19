@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://8hliks4n11uo"]
+
+[ext_resource type="Texture2D" uid="uid://phq44mbed2qn" path="res://art/maps/OutsideCity1Lower.png" id="1_iwdvx"]
+
+[node name="map_City" type="Node2D" unique_id=874050817]
+
+[node name="lower_Sprite" type="Sprite2D" parent="." unique_id=1877667778]
+scale = Vector2(5, 5)
+texture = ExtResource("1_iwdvx")
+centered = false

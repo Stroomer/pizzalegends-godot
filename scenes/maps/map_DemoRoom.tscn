@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c37osle8j2gan"]
+
+[ext_resource type="Texture2D" uid="uid://l4yubm178tbl" path="res://art/maps/DemoRoom1Lower.png" id="1_7kuol"]
+[ext_resource type="PackedScene" uid="uid://mjawnw6jbc50" path="res://scenes/objects/person/person.tscn" id="2_0cc7r"]
+
+[node name="map_DemoRoom" type="Node2D" unique_id=1452930331]
+
+[node name="lower_Sprite" type="Sprite2D" parent="." unique_id=1311894078]
+scale = Vector2(5, 5)
+texture = ExtResource("1_7kuol")
+centered = false
+
+[node name="objects" type="Node2D" parent="." unique_id=1863272048]
+
+[node name="person1" parent="objects" unique_id=1634091188 instance=ExtResource("2_0cc7r")]
+position = Vector2(367, 687)
+skin = "Erio"
+
+[node name="person2" parent="objects" unique_id=322126888 instance=ExtResource("2_0cc7r")]
+position = Vector2(600, 600)
+skin = "NPC4"
+
+[node name="person3" parent="objects" unique_id=1015571961 instance=ExtResource("2_0cc7r")]
+position = Vector2(852, 673)
+skin = "NPC5"
