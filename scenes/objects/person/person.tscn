@@ -9,7 +9,6 @@ radius = 26.0
 
 [node name="person" type="CharacterBody2D" unique_id=1634091188]
 script = ExtResource("1_uryea")
-skin = "NPC1"
 
 [node name="body_Sprite" type="Sprite2D" parent="." unique_id=21258074]
 position = Vector2(0, -65.000015)

@@ -9,5 +9,13 @@ func _ready() -> void:
 	
 	var hero = load("res://scenes/objects/person/person.tscn").instantiate();
 	hero.is_controllable = true;
-	hero.position = Vector2(400, 400);
+	
+	var hero_spawn = loaded_map.get_node("hero_spawn");
+	hero.position = hero_spawn.position;
+	hero_spawn.visible = false;
 	loaded_map.get_node("objects").add_child(hero);
+	
+	var camera = load("res://scenes/camera_2d.tscn").instantiate();
+	camera.set_following(hero);
+	camera.make_current();
+	add_child(camera);
