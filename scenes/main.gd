@@ -9,5 +9,5 @@ func _ready() -> void:
 	
 	var hero = load("res://scenes/objects/person/person.tscn").instantiate();
 	hero.is_controllable = true;
-	hero.position = Vector2(100, 100);
+	hero.position = Vector2(400, 400);
 	loaded_map.get_node("objects").add_child(hero);
