@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://l4yubm178tbl" path="res://art/maps/DemoRoom1Lower.png" id="1_7kuol"]
 [ext_resource type="PackedScene" uid="uid://mjawnw6jbc50" path="res://scenes/objects/person/person.tscn" id="2_0cc7r"]
 [ext_resource type="PackedScene" uid="uid://bh4jqiyurpx3n" path="res://scenes/objects/hero_spawn/hero_spawn.tscn" id="3_kjlgt"]
+[ext_resource type="PackedScene" uid="uid://jv3t8qwqbwqt" path="res://scenes/objects/chair/chair.tscn" id="3_qhhho"]
 [ext_resource type="Texture2D" uid="uid://tqhbkn4h1per" path="res://art/maps/Map_DemoUpper.png" id="4_2woeh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txmqm"]
@@ -19,6 +20,7 @@ texture = ExtResource("1_7kuol")
 centered = false
 
 [node name="objects" type="Node2D" parent="." unique_id=1863272048]
+y_sort_enabled = true
 
 [node name="person1" parent="objects" unique_id=1634091188 instance=ExtResource("2_0cc7r")]
 position = Vector2(367, 687)
@@ -27,6 +29,16 @@ skin = "Erio"
 [node name="person3" parent="objects" unique_id=1015571961 instance=ExtResource("2_0cc7r")]
 position = Vector2(852, 673)
 skin = "NPC6"
+
+[node name="chair" parent="objects" unique_id=1140656142 instance=ExtResource("3_qhhho")]
+position = Vector2(823, 543)
+
+[node name="chair2" parent="objects" unique_id=1058133155 instance=ExtResource("3_qhhho")]
+position = Vector2(530, 538)
+use_color = "Green"
+
+[node name="chair3" parent="objects" unique_id=767106459 instance=ExtResource("3_qhhho")]
+position = Vector2(433, 766)
 
 [node name="hero_spawn" parent="." unique_id=1621964506 instance=ExtResource("3_kjlgt")]
 position = Vector2(708, 547)
