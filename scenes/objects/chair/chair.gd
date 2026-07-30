@@ -6,11 +6,6 @@ var sprite_map = {
 	"Blue":  "res://art/objects/chair-blue.png",
 };
 
-#@export_enum("Green", "Blue") var use_color = "Blue":
-	#set(new_use_color):
-		#use_color = new_use_color;
-		#_update_sprite();
-
 @export_enum("Green", "Blue")
 var use_color := "Blue":
 	set(new_use_color):

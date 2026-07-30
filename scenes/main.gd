@@ -19,3 +19,19 @@ func _ready() -> void:
 	camera.set_following(hero);
 	camera.make_current();
 	add_child(camera);
+	
+	await get_tree().create_timer(3.2).timeout;
+	start_cutscene();
+
+func start_cutscene()-> void:
+	var cutscene = load("res://scripts/cutscene.gd").new();	
+	add_child(cutscene);
+	
+	$CanvasLayer/cutscene_Sprite.visible = true;
+	DirectionController.set_locked(true);
+	
+	await cutscene.cutscene_done;
+	
+	cutscene.queue_free();
+	$CanvasLayer/cutscene_Sprite.visible = false;
+	DirectionController.set_locked(false);
