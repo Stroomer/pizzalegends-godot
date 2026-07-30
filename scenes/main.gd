@@ -21,10 +21,20 @@ func _ready() -> void:
 	add_child(camera);
 	
 	await get_tree().create_timer(3.2).timeout;
-	start_cutscene();
+	start_cutscene([
+		{
+			"type": Constants.EVENTS.TEXT_MESSAGE,
+			"text": "HELLO THERE!"	
+		},
+		{
+			"type": Constants.EVENTS.TEXT_MESSAGE,
+			"text": "This is what i say next..."	
+		}
+	]);
 
-func start_cutscene()-> void:
+func start_cutscene(events)-> void:
 	var cutscene = load("res://scripts/cutscene.gd").new();	
+	cutscene.events = events;
 	add_child(cutscene);
 	
 	$CanvasLayer/cutscene_Sprite.visible = true;

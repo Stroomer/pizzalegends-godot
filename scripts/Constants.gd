@@ -6,3 +6,7 @@ const DIRS = {
 	"LEFT" : "LEFT",
 	"RIGHT" : "RIGHT",
 };
+
+const EVENTS = {
+	"TEXT_MESSAGE" : "TEXT_MESSAGE",
+};
