@@ -22,14 +22,14 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for dir in directions:
 		var key = dir[0];		
 		var value = dir[1];
 		if Input.is_action_just_pressed(key):
 			held_directions.push_front(value);
 		if Input.is_action_just_released(key):
-			held_directions = held_directions.filter(func(dir):
-				return dir != value
+			held_directions = held_directions.filter(func(_dir):
+				return _dir != value
 			);
 		

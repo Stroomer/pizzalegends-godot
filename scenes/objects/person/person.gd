@@ -73,7 +73,7 @@ func _move_towards_destination(delta:float) -> void:
 	else:
 		velocity = Vector2(0,0);
 		
-func _process(delta:float) -> void:
+func _process(_delta:float) -> void:
 	if Engine.is_editor_hint():
 		return;
 	_proces_AnimationPlayer();

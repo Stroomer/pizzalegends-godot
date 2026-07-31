@@ -17,8 +17,8 @@ func _ready() -> void:
 	
 	var camera = load("res://scenes/camera_2d.tscn").instantiate();
 	camera.set_following(hero);
-	camera.make_current();
 	add_child(camera);
+	camera.make_current();
 	
 	await get_tree().create_timer(3.2).timeout;
 	start_cutscene([

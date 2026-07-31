@@ -11,7 +11,7 @@ func set_following(node) -> void:
 	_following_node = node;	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _following_node and is_instance_valid(_following_node):
 		var distance = position.distance_to(_following_node.position);
 		if distance > 3:
