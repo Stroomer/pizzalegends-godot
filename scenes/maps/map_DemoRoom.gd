@@ -21,7 +21,11 @@ func _init()-> void:
 					},
 					{
 						"type": "TEXT_MESSAGE",
-						"text": "You found me!",
+						"text": "Hallo Lotte!",
+					},
+					{
+						"type": "TEXT_MESSAGE",
+						"text": "Ik vind jou lief!!",
 					},
 					{
 						"type": "WALK_TO_POSITION",

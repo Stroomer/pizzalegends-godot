@@ -1,25 +1,37 @@
 extends Node2D
 
 var loaded_map;
+var camera;
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Subscribe to cutscene manager group
 	add_to_group("cutscene_receivers");
 	
-	loaded_map = load("res://scenes/maps/map_DemoRoom.tscn").instantiate();
+	_start_map("map_DemoRoom", null);  # map_DemoRoom map_City
+
+
+func _start_map(map_name, hero_start_position=null) -> void:
+	
+	var map_scene_path = "res://scenes/maps/{map_name}.tscn".format({"map_name": map_name});
+	loaded_map = load(map_scene_path).instantiate();
 	#var loaded_map = load("res://scenes/maps/map_City.tscn").instantiate();
-	add_child(loaded_map);
+	add_child.call_deferred(loaded_map);
 	
 	var hero = load("res://scenes/objects/person/person.tscn").instantiate();
 	hero.name = "HERO";
 	hero.is_controllable = true;
 	
 	var hero_spawn = loaded_map.get_node("hero_spawn");
-	hero.position = hero_spawn.position;
 	hero_spawn.visible = false;
+	
+	if hero_start_position:
+		hero.position = hero_start_position;
+	else:
+		hero.position = hero_spawn.position;
+	
 	loaded_map.get_node("objects").add_child(hero);
 	
-	var camera = load("res://scenes/camera_2d.tscn").instantiate();
+	camera = load("res://scenes/camera_2d.tscn").instantiate();
 	camera.set_following(hero);
 	add_child(camera);
 	camera.make_current();
@@ -60,3 +72,8 @@ func cutscene_lookup_requested(body)->void:
 	var events = loaded_map.lookup_cutscene(body.name);
 	if events:
 		start_cutscene(events);
+
+func cutscene_map_change_requested(go_to_map, go_to_position)->void:
+	camera.queue_free();
+	loaded_map.queue_free();
+	_start_map(go_to_map, go_to_position);

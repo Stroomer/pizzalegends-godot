@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bh4jqiyurpx3n" path="res://scenes/objects/hero_spawn/hero_spawn.tscn" id="3_kjlgt"]
 [ext_resource type="PackedScene" uid="uid://jv3t8qwqbwqt" path="res://scenes/objects/chair/chair.tscn" id="3_qhhho"]
 [ext_resource type="Texture2D" uid="uid://tqhbkn4h1per" path="res://art/maps/Map_DemoUpper.png" id="4_2woeh"]
+[ext_resource type="PackedScene" uid="uid://xeqpyyelg2rl" path="res://scenes/objects/transition_tile/transition_tile.tscn" id="7_vo0l4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txmqm"]
 size = Vector2(160, 155)
@@ -20,6 +21,11 @@ script = ExtResource("1_2inpo")
 scale = Vector2(5, 5)
 texture = ExtResource("1_7kuol")
 centered = false
+
+[node name="transition_tile" parent="." unique_id=2048266418 instance=ExtResource("7_vo0l4")]
+position = Vector2(440, 1022)
+go_to_map = "map_City"
+spawn_at_position = Vector2(2122, 1335)
 
 [node name="objects" type="Node2D" parent="." unique_id=1863272048]
 y_sort_enabled = true
@@ -43,7 +49,7 @@ use_color = "Green"
 position = Vector2(433, 766)
 
 [node name="hero_spawn" parent="." unique_id=1621964506 instance=ExtResource("3_kjlgt")]
-position = Vector2(708, 547)
+position = Vector2(600, 557)
 
 [node name="upper_Sprite" type="Sprite2D" parent="." unique_id=1289182123]
 scale = Vector2(5, 5)
