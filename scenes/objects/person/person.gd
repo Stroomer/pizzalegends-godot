@@ -7,6 +7,8 @@ var skin := "Hero":
 		skin = value
 		if is_node_ready():
 			_update_sprite();
+
+var is_interactive = true;
 		
 var sprite_map = {
 	"Hero": "res://art/people/hero.png",
@@ -77,6 +79,7 @@ func _process(_delta:float) -> void:
 	if Engine.is_editor_hint():
 		return;
 	_proces_AnimationPlayer();
+	_process_action_detect();
 
 const ANIMATION_STAND = "STAND";
 const ANIMATION_WALK  = "WALK";
@@ -103,3 +106,27 @@ func _proces_AnimationPlayer() -> void:
 	
 	var animation_to_play = animation_map[animation_type][sprite_direction];
 	$AnimationPlayer.play(animation_to_play);
+
+
+func _process_action_detect():
+	if is_controllable and Input.is_action_just_pressed("ui_accept"):
+
+		# Don't allow ENTER while cutscene is playing
+		if DirectionController.is_locked:
+			return;
+
+		var detect_scene = load("res://scenes/objects/hero_detect/hero_detect.tscn").instantiate()
+		detect_scene.position = position;
+
+		var nudge_distance = 16 * 5;
+
+		if sprite_direction == Constants.DIRS.LEFT:
+			detect_scene.position.x -= nudge_distance;
+		elif sprite_direction == Constants.DIRS.RIGHT:
+			detect_scene.position.x += nudge_distance;
+		elif sprite_direction == Constants.DIRS.UP:
+			detect_scene.position.y -= nudge_distance;
+		elif sprite_direction == Constants.DIRS.DOWN:
+			detect_scene.position.y += nudge_distance;
+
+		get_parent().add_child(detect_scene);	

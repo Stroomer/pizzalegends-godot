@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c37osle8j2gan"]
 
+[ext_resource type="Script" uid="uid://bhhnyx6mt06gl" path="res://scenes/maps/map_DemoRoom.gd" id="1_2inpo"]
 [ext_resource type="Texture2D" uid="uid://l4yubm178tbl" path="res://art/maps/DemoRoom1Lower.png" id="1_7kuol"]
 [ext_resource type="PackedScene" uid="uid://mjawnw6jbc50" path="res://scenes/objects/person/person.tscn" id="2_0cc7r"]
 [ext_resource type="PackedScene" uid="uid://bh4jqiyurpx3n" path="res://scenes/objects/hero_spawn/hero_spawn.tscn" id="3_kjlgt"]
@@ -13,6 +14,7 @@ size = Vector2(160, 155)
 size = Vector2(160, 235)
 
 [node name="map_DemoRoom" type="Node2D" unique_id=1452930331]
+script = ExtResource("1_2inpo")
 
 [node name="lower_Sprite" type="Sprite2D" parent="." unique_id=1311894078]
 scale = Vector2(5, 5)

@@ -1,9 +1,12 @@
 extends Node2D
 
+var loaded_map;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var loaded_map = load("res://scenes/maps/map_DemoRoom.tscn").instantiate();
+	add_to_group("cutscene_receivers");
+	
+	loaded_map = load("res://scenes/maps/map_DemoRoom.tscn").instantiate();
 	#var loaded_map = load("res://scenes/maps/map_City.tscn").instantiate();
 	add_child(loaded_map);
 	
@@ -20,17 +23,17 @@ func _ready() -> void:
 	add_child(camera);
 	camera.make_current();
 	
-	await get_tree().create_timer(3.2).timeout;
-	start_cutscene([
-		{
-			"type": Constants.EVENTS.TEXT_MESSAGE,
-			"text": "HELLO THERE!"	
-		},
-		{
-			"type": Constants.EVENTS.TEXT_MESSAGE,
-			"text": "This is what i say next..."	
-		}
-	]);
+	#await get_tree().create_timer(3.2).timeout;
+	#start_cutscene([
+		#{
+			#"type": Constants.EVENTS.TEXT_MESSAGE,
+			#"text": "HELLO THERE!"	
+		#},
+		#{
+			#"type": Constants.EVENTS.TEXT_MESSAGE,
+			#"text": "This is what i say next..."	
+		#}
+	#]);
 
 func start_cutscene(events)-> void:
 	var cutscene = load("res://scripts/cutscene.gd").new();	
@@ -44,4 +47,11 @@ func start_cutscene(events)-> void:
 	
 	cutscene.queue_free();
 	$CanvasLayer/cutscene_Sprite.visible = false;
+	
+	await get_tree().create_timer(0.2).timeout;
 	DirectionController.set_locked(false);
+
+func cutscene_lookup_requested(body)->void:
+	var events = loaded_map.lookup_cutscene(body.name);
+	if events:
+		start_cutscene(events);
