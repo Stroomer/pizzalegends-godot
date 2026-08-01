@@ -13,6 +13,12 @@ func _ready() -> void:
 func _start_event()->void:
 	var event = events[event_index];
 	
+	if event.type == Constants.EVENTS.STAND:
+		var stand = load("res://scenes/events/person_stand.tscn").instantiate();
+		stand.config = event;
+		var who = main_ref.get_object_by_name(event.who);
+		who.set_cutscene_event(stand, self);
+			
 	if event.type == Constants.EVENTS.WALK_TO_POSITION:
 		var walk_to_position = load("res://scenes/events/person_walk_to_position.tscn").instantiate();
 		walk_to_position.config = event;

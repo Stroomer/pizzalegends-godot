@@ -8,6 +8,18 @@ func _init()-> void:
 				"requires": [],
 				"events": [
 					{
+						"type": "STAND",
+						"direction": "LEFT",
+						"who": "person1",
+						"duration": 1.2,
+					},
+					{
+						"type": "STAND",
+						"direction": "UP",
+						"who": "person1",
+						"duration": 2.2,
+					},
+					{
 						"type": "TEXT_MESSAGE",
 						"text": "You found me!",
 					},
