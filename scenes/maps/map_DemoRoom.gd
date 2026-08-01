@@ -10,6 +10,11 @@ func _init()-> void:
 					{
 						"type": "TEXT_MESSAGE",
 						"text": "You found me!",
+					},
+					{
+						"type": "WALK_TO_POSITION",
+						"who": "person1",
+						"position": [682,512],
 					}
 				]
 			}

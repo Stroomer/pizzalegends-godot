@@ -25,7 +25,7 @@ centered = false
 y_sort_enabled = true
 
 [node name="person1" parent="objects" unique_id=1634091188 instance=ExtResource("2_0cc7r")]
-position = Vector2(367, 687)
+position = Vector2(312, 650)
 skin = "Erio"
 
 [node name="person3" parent="objects" unique_id=1015571961 instance=ExtResource("2_0cc7r")]
@@ -36,7 +36,7 @@ skin = "NPC6"
 position = Vector2(823, 543)
 
 [node name="chair2" parent="objects" unique_id=1058133155 instance=ExtResource("3_qhhho")]
-position = Vector2(530, 538)
+position = Vector2(415, 549)
 use_color = "Green"
 
 [node name="chair3" parent="objects" unique_id=767106459 instance=ExtResource("3_qhhho")]

@@ -11,6 +11,7 @@ func _ready() -> void:
 	add_child(loaded_map);
 	
 	var hero = load("res://scenes/objects/person/person.tscn").instantiate();
+	hero.name = "HERO";
 	hero.is_controllable = true;
 	
 	var hero_spawn = loaded_map.get_node("hero_spawn");
@@ -35,9 +36,13 @@ func _ready() -> void:
 		#}
 	#]);
 
+func get_object_by_name(node_name:String)->Node2D:
+	return loaded_map.get_node("objects").get_node(node_name);
+
 func start_cutscene(events)-> void:
 	var cutscene = load("res://scripts/cutscene.gd").new();	
 	cutscene.events = events;
+	cutscene.main_ref = self;
 	add_child(cutscene);
 	
 	$CanvasLayer/cutscene_Sprite.visible = true;

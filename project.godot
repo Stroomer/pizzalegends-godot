@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Constants="*uid://saeon35grfbh"
 DirectionController="*uid://dn2pv47okeq32"
+Helpers="*uid://ca8peiayhrppk"
 
 [display]
 

@@ -26,7 +26,11 @@ var sprite_map = {
 
 var is_controllable = false;
 var manual_destination_scene;
+var override_destination_scene;
 var sprite_direction = "DOWN";
+
+var cutscene_behavior:Node;
+var normal_behavior:Node;
 
 func _ready() -> void:
 	manual_destination_scene = load("res://scenes/objects/destination/destination.tscn").instantiate();
@@ -66,15 +70,43 @@ func _physics_process_manual_set_destination() -> void:
 			sprite_direction = dir;	
 
 func _move_towards_destination(delta:float) -> void:
-	var distance = position.distance_to(manual_destination_scene.position);
-	if distance > 3:
-		var direction = position.direction_to(manual_destination_scene.position);
+	var use_dest = manual_destination_scene;
+	if override_destination_scene:
+		use_dest = override_destination_scene;
+	
+	var distance = position.distance_to(use_dest.position);
+	if distance > 1:
+		var direction = position.direction_to(use_dest.position);
+		var face_dir = Helpers.vec_to_dir(direction);
+		
+		if face_dir == Vector2.RIGHT:
+			sprite_direction = Constants.DIRS.RIGHT;
+		elif face_dir == Vector2.LEFT:
+			sprite_direction = Constants.DIRS.LEFT;
+		elif face_dir == Vector2.UP:
+			sprite_direction = Constants.DIRS.UP;
+		elif face_dir == Vector2.DOWN:
+			sprite_direction = Constants.DIRS.DOWN;
+		
 		var speed = delta * 18000.0;
 		velocity = direction * speed;
 		move_and_slide();
 	else:
 		velocity = Vector2(0,0);
 		
+func set_cutscene_event(event_scene, cutscene)->void:
+	# Set cutscene specific behavior
+	cutscene_behavior = event_scene;
+	add_child(event_scene);
+	
+	# Await completion
+	await event_scene.done;
+	
+	# Clear out completed behavior
+	cutscene_behavior = null;
+	event_scene.queue_free();
+	cutscene.on_event_complete();
+	
 func _process(_delta:float) -> void:
 	if Engine.is_editor_hint():
 		return;

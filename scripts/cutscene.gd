@@ -2,6 +2,7 @@ extends Node
 
 var events;
 var event_index = 0;
+var main_ref;
 
 signal cutscene_done;
 
@@ -11,6 +12,13 @@ func _ready() -> void:
 
 func _start_event()->void:
 	var event = events[event_index];
+	
+	if event.type == Constants.EVENTS.WALK_TO_POSITION:
+		var walk_to_position = load("res://scenes/events/person_walk_to_position.tscn").instantiate();
+		walk_to_position.config = event;
+		var who = main_ref.get_object_by_name(event.who);
+		who.set_cutscene_event(walk_to_position, self);
+		
 	if event.type == Constants.EVENTS.TEXT_MESSAGE:
 		
 		# Put a text message on the screen
@@ -24,6 +32,9 @@ func _start_event()->void:
 		#Remove it and move on
 		text_message.queue_free();
 		_event_complete();
+	
+func on_event_complete()->void:
+	_event_complete();	
 	
 func _event_complete()->void:
 	event_index += 1;
