@@ -49,7 +49,7 @@ use_color = "Green"
 position = Vector2(433, 766)
 
 [node name="hero_spawn" parent="." unique_id=1621964506 instance=ExtResource("3_kjlgt")]
-position = Vector2(600, 557)
+position = Vector2(302, 893)
 
 [node name="upper_Sprite" type="Sprite2D" parent="." unique_id=1289182123]
 scale = Vector2(5, 5)
