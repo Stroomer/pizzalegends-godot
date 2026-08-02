@@ -17,6 +17,9 @@ func get_direction() -> Variant:
 func set_locked(new_value:bool) -> void:
 	is_locked = new_value;
 
+func reset()->void:
+	held_directions = [];
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

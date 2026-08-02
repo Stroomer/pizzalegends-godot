@@ -76,10 +76,12 @@ func cutscene_lookup_requested(body)->void:
 
 func cutscene_map_change_requested(go_to_map, go_to_position)->void:
 	# Fade in the fader
-	var hero_direction = get_object_by_name("HERO").sprite_direction;
 	var fader = $CanvasLayer/screen_fade;
 	fader.fade_in();
 	await fader.faded_in;
+	
+	# Register current sprite_direction of hero
+	var hero_direction = get_object_by_name("HERO").sprite_direction;
 	
 	# Change the map
 	camera.queue_free();
