@@ -57,7 +57,6 @@ texture = ExtResource("4_2woeh")
 centered = false
 
 [node name="walls" type="StaticBody2D" parent="." unique_id=1176357281]
-visible = false
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls" unique_id=1343577013]
@@ -71,5 +70,5 @@ shape = SubResource("RectangleShape2D_2woeh")
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="walls" unique_id=1200182179]
-polygon = PackedVector2Array(78, 967, 80, 476, 320, 478, 320, 322, 479, 322, 483, 472, 872, 476, 879, 559, 961, 559, 959, 472, 1040, 474, 1040, 559, 1121, 558, 1120, 118, 57, 116, 50, 968)
+polygon = PackedVector2Array(398, 1051, 398, 966, 79, 968, 80, 479, 320, 478, 320, 320, 481, 319, 481, 478, 878, 478, 879, 559, 964, 559, 964, 483, 1037, 481, 1038, 558, 1121, 558, 1121, 62, 61, 62, 61, 995, 384, 995, 384, 1069, 498, 1069, 498, 994, 1143, 995, 1141, 63, 1121, 63, 1122, 967, 482, 965, 483, 1050)
 metadata/_edit_lock_ = true
